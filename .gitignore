@@ -1,0 +1,11 @@
+# Entornos virtuales de Python
+**/venv/
+**/_pycache_/
+*.pyc
+# Variables de entorno y secretos
+.env
+# Datos y resultados generados 
+data_pruebas/
+clientes/
+# Docker
+docker/data/

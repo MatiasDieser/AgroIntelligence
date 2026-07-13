@@ -1,0 +1,104 @@
+<svg viewBox="0 0 780 560" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12">
+  <rect width="780" height="560" fill="white"/>
+
+  <!-- Fondo del sistema -->
+  <rect x="160" y="30" width="460" height="500" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="390" y="52" text-anchor="middle" font-size="13" font-weight="bold" fill="#334155">Sistema Drones Agro</text>
+
+  <!-- ACTOR: Piloto/Programador -->
+  <circle cx="60" cy="140" r="18" fill="none" stroke="#1d4ed8" stroke-width="2"/>
+  <line x1="60" y1="158" x2="60" y2="200" stroke="#1d4ed8" stroke-width="2"/>
+  <line x1="35" y1="175" x2="85" y2="175" stroke="#1d4ed8" stroke-width="2"/>
+  <line x1="60" y1="200" x2="40" y2="225" stroke="#1d4ed8" stroke-width="2"/>
+  <line x1="60" y1="200" x2="80" y2="225" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="60" y="242" text-anchor="middle" font-weight="bold" fill="#1d4ed8">Piloto</text>
+  <text x="60" y="256" text-anchor="middle" fill="#1d4ed8">(Programador)</text>
+
+  <!-- ACTOR: Agrónomo -->
+  <circle cx="60" cy="380" r="18" fill="none" stroke="#15803d" stroke-width="2"/>
+  <line x1="60" y1="398" x2="60" y2="440" stroke="#15803d" stroke-width="2"/>
+  <line x1="35" y1="415" x2="85" y2="415" stroke="#15803d" stroke-width="2"/>
+  <line x1="60" y1="440" x2="40" y2="465" stroke="#15803d" stroke-width="2"/>
+  <line x1="60" y1="440" x2="80" y2="465" stroke="#15803d" stroke-width="2"/>
+  <text x="60" y="482" text-anchor="middle" font-weight="bold" fill="#15803d">Agrónomo</text>
+
+  <!-- ACTOR: Cliente/Productor -->
+  <circle cx="720" cy="200" r="18" fill="none" stroke="#7e22ce" stroke-width="2"/>
+  <line x1="720" y1="218" x2="720" y2="260" stroke="#7e22ce" stroke-width="2"/>
+  <line x1="695" y1="235" x2="745" y2="235" stroke="#7e22ce" stroke-width="2"/>
+  <line x1="720" y1="260" x2="700" y2="285" stroke="#7e22ce" stroke-width="2"/>
+  <line x1="720" y1="260" x2="740" y2="285" stroke="#7e22ce" stroke-width="2"/>
+  <text x="720" y="302" text-anchor="middle" font-weight="bold" fill="#7e22ce">Cliente</text>
+  <text x="720" y="316" text-anchor="middle" fill="#7e22ce">(Productor)</text>
+
+  <!-- ACTOR: Sistema IA -->
+  <rect x="700" y="390" width="40" height="40" rx="4" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="720" y="416" text-anchor="middle" font-size="18" fill="#dc2626">AI</text>
+  <text x="720" y="445" text-anchor="middle" font-weight="bold" fill="#dc2626">Sistema IA</text>
+  <text x="720" y="459" text-anchor="middle" fill="#dc2626">(LLM / YOLO)</text>
+
+  <!-- CASOS DE USO -->
+  <ellipse cx="310" cy="100" rx="110" ry="24" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="310" y="105" text-anchor="middle" fill="#1e40af">Planificar misión de vuelo</text>
+
+  <ellipse cx="310" cy="175" rx="110" ry="24" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="310" y="180" text-anchor="middle" fill="#1e40af">Ejecutar vuelo autónomo</text>
+
+  <ellipse cx="310" cy="255" rx="110" ry="24" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="310" y="260" text-anchor="middle" fill="#1e40af">Subir imágenes al servidor</text>
+
+  <ellipse cx="480" cy="100" rx="110" ry="24" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="480" y="105" text-anchor="middle" fill="#166534">Procesar fotogrametría</text>
+
+  <ellipse cx="480" cy="175" rx="110" ry="24" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="480" y="180" text-anchor="middle" fill="#166534">Calcular índices (NDVI…)</text>
+
+  <ellipse cx="480" cy="255" rx="110" ry="24" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="480" y="260" text-anchor="middle" fill="#166534">Detectar anomalías / animales</text>
+
+  <ellipse cx="390" cy="340" rx="130" ry="24" fill="#f3e8ff" stroke="#a855f7" stroke-width="1.5"/>
+  <text x="390" y="345" text-anchor="middle" fill="#6b21a8">Generar informe automático PDF</text>
+
+  <ellipse cx="310" cy="420" rx="110" ry="24" fill="#fce7f3" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="310" y="425" text-anchor="middle" fill="#9d174d">Validar / editar informe</text>
+
+  <ellipse cx="480" cy="420" rx="110" ry="24" fill="#fce7f3" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="480" y="425" text-anchor="middle" fill="#9d174d">Ver informe / portal web</text>
+
+  <ellipse cx="480" cy="490" rx="110" ry="24" fill="#fce7f3" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="480" y="495" text-anchor="middle" fill="#9d174d">Exportar GIS (Shapefile/KMZ)</text>
+
+  <!-- Relaciones Piloto -->
+  <line x1="80" y1="133" x2="198" y2="102" stroke="#3b82f6" stroke-width="1.2"/>
+  <line x1="80" y1="140" x2="198" y2="175" stroke="#3b82f6" stroke-width="1.2"/>
+  <line x1="80" y1="148" x2="198" y2="252" stroke="#3b82f6" stroke-width="1.2"/>
+
+  <!-- Relaciones Agrónomo -->
+  <line x1="80" y1="380" x2="198" y2="422" stroke="#15803d" stroke-width="1.2"/>
+  <line x1="80" y1="375" x2="258" y2="343" stroke="#15803d" stroke-width="1.2"/>
+
+  <!-- Relaciones Cliente -->
+  <line x1="700" y1="198" x2="592" y2="180" stroke="#7e22ce" stroke-width="1.2"/>
+  <line x1="700" y1="205" x2="592" y2="423" stroke="#7e22ce" stroke-width="1.2"/>
+  <line x1="700" y1="210" x2="592" y2="490" stroke="#7e22ce" stroke-width="1.2"/>
+
+  <!-- Relaciones IA -->
+  <line x1="703" y1="405" x2="592" y2="260" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <line x1="703" y1="408" x2="522" y2="340" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="4,2"/>
+
+  <!-- Flujos internos entre UCs -->
+  <line x1="420" y1="175" x2="368" y2="175" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="420" y1="255" x2="368" y2="255" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="480" y1="279" x2="440" y2="318" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="310" y1="279" x2="350" y2="318" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="390" y1="364" x2="340" y2="398" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="420" y1="364" x2="460" y2="398" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="480" y1="444" x2="480" y2="468" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+
+  <!-- Leyenda -->
+  <rect x="168" y="530" width="430" height="20" rx="3" fill="none"/>
+  <line x1="175" y1="541" x2="205" y2="541" stroke="#64748b" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="210" y="545" font-size="10" fill="#64748b">flujo / dependencia entre casos</text>
+  <line x1="340" y1="541" x2="370" y2="541" stroke="#dc2626" stroke-width="1.2" stroke-dasharray="4,2"/>
+  <text x="375" y="545" font-size="10" fill="#dc2626">interviene Sistema IA</text>
+</svg>

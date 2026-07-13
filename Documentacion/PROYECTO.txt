@@ -1,0 +1,126 @@
+PROYECTO: DRON PARA AGRO
+
+=================================================================================
+APRENDER: 
+- GIS y conceptos geoespaciales básicos: 
+	Shapefiles, geojson, kml, geotiff
+	sistemas de coordenadas (Wgs84, utm)
+	instalar qgis y usarlo
+-Fotogrametría básica
+	Como se construye un ortomosaico a partir de fotos
+	DSM / DTM / nube de puntos
+	OpenDroneMap
+-Indices vegetales
+	NDVI, NDRE, SAVI, EVI
+	Como se calculan (algebra de bandas)
+	que significan agronómicamente 
+-Python para datos
+	numpy, rasterio, geopandas, matplotlib, opencv
+	YOLO
+-Vision por computadora / IA
+	segmentación semántica
+	como usar un modelo preentrenado sin entrenarlo desde cero (inference)
+	etiquetar imágenes (Label studio, Roboflow)
+-Pilotaje de drones
+	curso básico
+	planificación de misiones (overlap frontal/lateral)
+	apps de planificación: DJI Fly, litchi, dronedeploy
+	Entender GSD
+-Marco legal argentino 
+	RAAC parte 100 y 101 (están en sitio ANAC)
+	Proceso de registro de equipo ante ANAC
+	Zonas restringidas
+-Negocio (Agro)
+	Ciclos de cultivo, estrés hidrico, deficiencias nutricionales
+	Agricultura de precision (INTA)
+	Entender los cultivos de cada zona
+=================================================================================
+
+=================================================================================
+
+Links por tema
+GIS y conceptos geoespaciales
+QGIS (descargar): qgis.org/download
+Tutorial QGIS en español: docs.qgis.org/es
+Qué es un shapefile / GeoJSON: geojson.org y buscar "QGIS for beginners" en YouTube
+Imágenes Sentinel-2 gratis (para practicar sin dron): browser.dataspace.copernicus.eu
+Fotogrametría
+OpenDroneMap (instalar con Docker): opendronemap.org
+WebODM (interfaz visual de ODM): github.com/OpenDroneMap/WebODM
+Datasets de muestra para practicar: opendronemap.org/odm/datasets
+Índices vegetales
+Explicación NDVI simple: buscar "NDVI explained" en YouTube, canal de ESRI
+Calculadora de índices con Rasterio: rasterio.readthedocs.io
+Material INTA agricultura de precisión: inta.gob.ar/temas/agricultura-de-precision
+Python para datos
+Rasterio: rasterio.readthedocs.io
+GeoPandas: geopandas.org
+NumPy: numpy.org/learn
+OpenCV Python: docs.opencv.org/4.x/d6/d00/tutorial_py_root.html
+Visión por computadora / IA
+YOLOv8 (Ultralytics): docs.ultralytics.com
+Label Studio (etiquetar imágenes): labelstud.io
+Roboflow (datasets + etiquetado online): roboflow.com
+Curso práctico de computer vision (gratuito): learn.roboflow.com
+Pilotaje y planificación de misiones
+DJI Flight Simulator (practicar sin dron): store.dji.com/product/dji-flight-simulator
+Litchi (app de misiones autónomas para DJI): flylitchi.com
+DroneDeploy (planificación + procesamiento): dronedeploy.com
+Marco legal ANAC
+RAAC Parte 100 y 101: argentina.gob.ar/anac/rpa-rpas
+App DAIP (zonas restringidas): buscar "DAIP ANAC" en la tienda de apps de su celular
+Resumen de la resolución 550/2025: srhornero.com/blog/raac-100
+Agro / contexto del negocio
+INTA - Agricultura de precisión: inta.gob.ar
+Auravant (estudiarlos como referencia): auravant.com
+Agrofy (ver el mercado): agrofy.com.ar
+
+=================================================================================
+
+https://www.lanacion.com.ar/economia/campo/drones-agricolas-el-explosivo-crecimiento-de-un-negocio-que-revoluciona-el-campo-nid14032026/
+https://www.argentina.gob.ar/noticias/red-de-drones-del-inta-estrategia-datos-y-sinergias-para-el-agro-argentino
+https://www.argentina.gob.ar/anac/nuevo-marco-normativo-para-la-operacion-de-drones
+https://www.infobae.com/politica/2025/08/08/el-gobierno-desregulo-el-uso-de-drones-y-elimino-restricciones-para-operar-equipos-inferiores-a-250-gramos/
+https://www.srhornero.com/blog/raac-100-anlisis-de-la-nueva-regulacin-de-drones-en-argentina
+https://news.agrofy.com.ar/noticia/213602/35-hectareas-hora-y-doble-capacidad-mismo-precio-se-lanzo-argentina-nueva-generacion
+https://www.agrifly.com.ar/blog/drones-vs-aviones-vs-pulverizadoras
+https://dji.bidcomagro.com.ar/
+https://summit-agro.com/ar/es/agtech/
+
+=================================================================================
+
+DECISIONES IMPORTANTES (SOFTWARE):
+
+1- ESTRUCTURA DE CARPETAS: clientes/{id_cliente}/campos/{id_campo}/fecha_vuelo/
+
+2- COMUNICACION API (.NET) Y WORKER (PYTHON): CARPETA COMPARTIDA WATCHEADA
+
+3- BASE DE DATOS: POSTGRESQL -> MEJOR PARA DATOS GEOESPACIALES, TIENE EXTENSION POSTGIS PARA GEOMETRIA DE CAMPOS
+
+4- SERVIDOR: PC LOCAL. MEJOR PARA EMPEZAR Y FACIL DE MIGRAR.
+
+5- HARDCODEADO DE MOMENTO, EN UN FUTURO MULTITENANT
+
+6- SIN UI DE MOMENTO
+
+7- INFRA: DOCKER COMPOSE. MAS FACIL PARA MIGRAR DE MAQUINAS Y DEPLOYAR. 
+
+8- AUTH: NO HAY POR AHORA. NO ES NECESARIO SI LOS INFORMES SE MANDAN POR WHATSAPP POR EJEMPLO. SIN USUARIOS, PERMISOS, ETC. EN MI OPINION INNECESARIO Y ENGORROSO PARA EL USUARIO. 
+
+=================================================================================
+Relevamientos, detección y conteo de plantas, inventario ganadero, diagnóstico de cultivos y su monitoreo durante la campaña, estrés térmico, caracterización de bosques.
+=================================================================================
+
+
+
+SETUP PROYECTO:
+
+-INSTALAR DOCKER DESKTOP
+-INSTALAR .NET 8 SDK
+-INSTALAR PYTHON 3.11+
+-INSTALAR ALGUN IDE (VS 2022 Y VSCODE)
+-REPO GITHUB
+
+
+
+=================================================================================

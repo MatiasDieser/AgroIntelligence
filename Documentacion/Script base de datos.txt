@@ -1,0 +1,100 @@
+CREATE EXTENSION IF NOT EXISTS postgis;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;  -- necesaria para generar UUIDs
+
+-- CLIENTES
+CREATE TABLE clientes (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    nombre VARCHAR(200) NOT NULL,
+    telefono VARCHAR(50),
+    email VARCHAR(200),
+    notas TEXT,
+    fecha_alta TIMESTAMP DEFAULT NOW()
+);
+
+-- CAMPOS
+CREATE TABLE campos (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    cliente_id UUID REFERENCES clientes(id),
+    nombre VARCHAR(200) NOT NULL,
+    descripcion TEXT,
+    hectareas DECIMAL(10,2),
+    ubicacion TEXT,
+    geometria geometry(POLYGON, 4326),
+    fecha_alta TIMESTAMP DEFAULT NOW()
+);
+
+-- LOTES
+CREATE TABLE lotes (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    campo_id UUID REFERENCES campos(id),
+    nombre VARCHAR(200) NOT NULL,
+    hectareas DECIMAL(10,2),
+    cultivo_actual VARCHAR(200),
+    descripcion TEXT,
+    geometria geometry(POLYGON, 4326)
+);
+
+-- VUELOS
+CREATE TABLE vuelos (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    campo_id UUID REFERENCES campos(id),
+    lote_id UUID REFERENCES lotes(id),
+    tipo VARCHAR(50) NOT NULL,
+    fecha DATE NOT NULL,
+    estado VARCHAR(50) DEFAULT 'pendiente',
+    carpeta_path TEXT,
+    altura_vuelo_metros DECIMAL(6,2),
+    condiciones_climaticas TEXT,
+    notas TEXT,
+    fecha_creacion TIMESTAMP DEFAULT NOW()
+);
+
+-- TRABAJOS
+CREATE TABLE trabajos (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    vuelo_id UUID REFERENCES vuelos(id),
+    estado VARCHAR(50) DEFAULT 'pendiente',
+    etapa_actual VARCHAR(100),
+    error TEXT,
+    fecha_inicio TIMESTAMP,
+    fecha_fin TIMESTAMP
+);
+
+CREATE UNIQUE INDEX idx_trabajo_activo ON trabajos (vuelo_id)
+WHERE estado IN ('pendiente', 'procesando');
+
+-- RESULTADOS
+CREATE TABLE resultados (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    vuelo_id UUID REFERENCES vuelos(id),
+    ortomosaico_path TEXT,
+    indice_tipo VARCHAR(50),
+    indice_path TEXT,
+    estadisticas JSONB,
+    fecha_generacion TIMESTAMP DEFAULT NOW()
+);
+
+-- INFORMES
+CREATE TABLE informes (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    vuelo_id UUID REFERENCES vuelos(id),
+    pdf_path TEXT,
+    link_unico VARCHAR(100) UNIQUE,
+    estado VARCHAR(50) DEFAULT 'borrador',
+    revisado_por TEXT,
+    fecha_revision TIMESTAMP,
+    fecha_generacion TIMESTAMP DEFAULT NOW()
+);
+
+-- OBSERVACIONES
+CREATE TABLE observaciones (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    vuelo_id UUID REFERENCES vuelos(id),
+    origen VARCHAR(20) NOT NULL,
+    tipo_deteccion VARCHAR(100),
+    descripcion TEXT,
+    confirmado BOOLEAN,
+    correccion TEXT,
+    punto geometry(POINT, 4326),
+    fecha TIMESTAMP DEFAULT NOW()
+);

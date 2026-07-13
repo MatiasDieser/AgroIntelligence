@@ -1,0 +1,14 @@
+# Levantar base de datos
+docker compose up -d
+
+# Ver que esté corriendo
+docker compose ps
+
+# Ver logs si algo rompe
+docker compose logs db
+
+# Apagar 
+docker compose down
+
+# Apagar y borrar los datos (si quiero volver a empezar o algo)
+docker compose down -v

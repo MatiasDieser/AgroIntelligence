@@ -1,0 +1,40 @@
+1. El worker procesa un vuelo y detecta zonas con anomalías
+   (por umbral de NDVI/VARI bajo, por ejemplo)
+   
+2. El sistema guarda esas detecciones en la tabla resultados
+   (estadisticas JSONB) y crea registros preliminares en 
+   observaciones con origen = 'sistema'
+
+3. Se genera el informe borrador y se le manda a Fran
+   (por ahora por WhatsApp)
+
+4. Fran revisa el campo (o el informe) y responde:
+   - "Sí, ahí hay estrés hídrico" → confirmado = true
+   - "No, eso es una sombra de nube" → confirmado = false, 
+     correccion = "sombra de nube, no es problema real"
+   - Agrega algo que el sistema no vio → nueva fila con 
+     origen = 'agronomo', sin relación a ninguna detección previa
+
+5. Quien cargue los datos actualiza esos registros en la BD
+   (al principio puede ser manual, un formulario en 
+   la API o directamente en DBeaver)
+
+Dos usos concretos de la tabla:
+
+Uso 1 — Mejorar el prompt de Claude. Antes de generar el próximo informe, le pasás a Claude ejemplos de correcciones pasadas del agrónomo como contexto: "en el pasado, el agrónomo corrigió que valores de VARI bajo en zonas de borde del lote suelen ser sombra de árboles, no estrés real — tener esto en cuenta." Esto es simple y funciona ya, sin entrenar nada.
+
+Uso 2 — Ajustar umbrales de detección. Si notás que el agrónomo rechaza sistemáticamente las detecciones con cierto rango de valores, ajustás el umbral que usa el worker para marcar algo como "anomalía". Es estadística simple sobre la tabla observaciones, no hace falta IA todavía.
+
+Uso 3 (a futuro, cuando haya volumen) — Entrenar un clasificador propio. Con cientos de observaciones confirmadas/corregidas, ahí sí tendrían dataset propio para entrenar un modelo que aprenda los patrones específicos de sus campos y de cómo piensa su agrónomo. Esto es fase avanzada, no ahora.
+
+Lo importante para que esto funcione en la práctica
+Fran no va a entrar a DBeaver a cargar datos. Necesita algo simple. Para el MVP, lo más realista es:
+
+El informe en PDF tiene una sección "Detecciones a validar" 
+con un ID corto para cada una (A1, A2, A3...)
+El agrónomo responde por WhatsApp: 
+"A1 confirmado, A2 es sombra no estrés, A3 ok pero también 
+hay maleza en el borde norte que no marcaron"
+Nosotros (manualmente al principio) cargamos esas respuestas en la tabla
+Cuando esto sea un cuello de botella real (muchos vuelos, mucha carga manual), ahí construyen una interfaz mínima solo para Fran (un formulario web bien simple).
+
