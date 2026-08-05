@@ -1,0 +1,37 @@
+=========================================================
+PENDIENTES
+=========================================================
+
+PRIORIDAD 1:
+
+	- API en .NET para procesar las imágenes, cargar clientes, endpoint que resuelve el link único y 	 	devuelve el PDF.
+	- Proponer windows forms para carga de clientes y soluciones manuales
+
+PRIORIDAD 2:
+
+	- Sistema de feedback loop via whatsapp?
+	- Refinar prompt de Gemini -> Plantilla fija en vez de texto libre (Diagnóstico, zonas de atención, 	acción sugerida, comparación con vuelo anterior). Mejores datos,
+	comparación histórica, darle ejemplos de un buen informe.
+	- Investigación Pix2Pix
+	- Revisar los otros indices aparte de NDVI
+	- Exponer el sistema fuera de tu PC — que un cliente real pueda abrir el link desde WhatsApp
+	- Comprar el dron y validar vuelos reales — primeras fotos propias, no más Sentinel-2 de prueba
+	- Validación comercial — mostrar informes reales al agrónomo y a productores conocidos, confirmar 	disposición de pago
+
+PRIORIDAD 3:
+
+	- Sistema de armado de ortomosaico georreferenciado (OpenDronMap)
+	- Implementar YOLO
+	- Recorte de análisis por lote — usar las geometrías de PostGIS para separar estadísticas por lote, no 	solo por campo entero
+	- Automatizar la ingesta de imágenes — reemplazar la copia manual por sync de nube o app propia, cuando 	el volumen lo justifique
+	- Preparar el expediente para financiamiento — FONTAR/ANR Emprendedores, una vez que haya tracción real 	(clientes, uso)
+
+=========================================================
+=========================================================
+
+
+
+
+
+
+

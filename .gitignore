@@ -1,11 +1,19 @@
 # Entornos virtuales de Python
 **/venv/
-**/_pycache_/
+**/__pycache__/
 *.pyc
 # Variables de entorno y secretos
 .env
-# Datos y resultados generados 
+# Datos y resultados generados
 data_pruebas/
 clientes/
+# Logs (contienen nombres de clientes)
+logs/
 # Docker
 docker/data/
+# .NET / Visual Studio
+**/bin/
+**/obj/
+**/.vs/
+*.user
+*.suo

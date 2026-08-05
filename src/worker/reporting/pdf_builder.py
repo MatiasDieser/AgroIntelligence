@@ -6,7 +6,7 @@ from reportlab.lib import colors
 
 
 def generar_pdf(ruta_salida, cliente_nombre, campo_nombre, fecha_vuelo,
-                 estadisticas, texto_analisis, ruta_mapa_ndvi):
+                 estadisticas, texto_analisis, ruta_mapa_ndvi, ruta_mapa_ndmi=None):
 
     doc = SimpleDocTemplate(ruta_salida, pagesize=A4,
                              topMargin=2*cm, bottomMargin=2*cm)
@@ -38,6 +38,11 @@ def generar_pdf(ruta_salida, cliente_nombre, campo_nombre, fecha_vuelo,
     elementos.append(Image(ruta_mapa_ndvi, width=14*cm, height=14*cm))
     elementos.append(Spacer(1, 12))
 
+    if ruta_mapa_ndmi:
+        elementos.append(Paragraph("Mapa de Índice Hídrico (NDMI)", seccion_style))
+        elementos.append(Image(ruta_mapa_ndmi, width=14*cm, height=14*cm))
+        elementos.append(Spacer(1, 12))
+
     elementos.append(Paragraph("Estadísticas del relevamiento", seccion_style))
     elementos.append(Paragraph(
         f"NDVI mínimo: {estadisticas['ndvi_min']:.3f} &nbsp;|&nbsp; "
@@ -45,6 +50,13 @@ def generar_pdf(ruta_salida, cliente_nombre, campo_nombre, fecha_vuelo,
         f"NDVI promedio: {estadisticas['ndvi_promedio']:.3f}",
         cuerpo_style
     ))
+    if "ndmi_promedio" in estadisticas:
+        elementos.append(Paragraph(
+            f"NDMI mínimo: {estadisticas['ndmi_min']:.3f} &nbsp;|&nbsp; "
+            f"NDMI máximo: {estadisticas['ndmi_max']:.3f} &nbsp;|&nbsp; "
+            f"NDMI promedio: {estadisticas['ndmi_promedio']:.3f}",
+            cuerpo_style
+        ))
 
     elementos.append(Paragraph("Análisis", seccion_style))
     for parrafo in texto_analisis.split("\n"):

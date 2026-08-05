@@ -12,3 +12,18 @@ docker compose down
 
 # Apagar y borrar los datos (si quiero volver a empezar o algo)
 docker compose down -v
+
+
+=====
+Levantar proyectos (mi local)
+
+cd C:\Users\matid\OneDrive\Escritorio\Proyecto\Docker
+docker compose up -d
+
+cd C:\Users\matid\OneDrive\Escritorio\Proyecto\src\worker
+.\venv\Scripts\Activate.ps1
+
+python watcher.py
+
+cd C:\Users\matid\OneDrive\Escritorio\Proyecto\src\api\AgroIntelligence.Api
+dotnet run
